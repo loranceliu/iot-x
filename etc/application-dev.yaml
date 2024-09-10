@@ -1,0 +1,10 @@
+Server:
+  Node: "Instance-2"
+  Port: 8082
+  MachineId: "ZPI7DQROM123"
+
+Redis:
+  Host: 192.168.2.204
+  Port: 6379
+  Pwd:
+  DB: 0

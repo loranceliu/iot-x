@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+import "message.proto";
+
+option go_package = "../../protobuf;protobuf";
+
+service Instance {
+  rpc Transfer (MessageInput) returns (MessageOutput);
+}

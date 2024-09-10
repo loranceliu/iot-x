@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+option go_package = "../../protobuf;protobuf";
+
+message MessageInput {
+  enum Version {
+    UNKNOWN_VERSION = 0;
+    VERSION_1 = 1;
+    VERSION_2 = 2;
+  }
+
+  enum Type {
+    UNKNOWN_TYPE = 0;
+    PING_PONG = 1;
+    LOGIN = 2;
+    REPORT = 3;
+    SEND_TO_DEVICE = 4;
+  }
+
+  int32 magicNum = 1;
+  Version version = 2;
+  string token = 3;
+  string requestId = 4;
+  Type type = 5;
+  bytes data = 6;
+}
+
+message MessageOutput {
+
+  enum Type {
+    UNKNOWN_TYPE = 0;
+    AUTH_SUCCESS = 1;
+    AUTH_FAILED = 2;
+    ACK = 3;
+    SEND_FROM_DEVICE = 4;
+  }
+
+  string requestId = 1;
+  Type type = 2;
+  string msg = 3;
+  bytes data = 4;
+}
+
+message DeviceInfo {
+  string sn = 1;
+  string model = 2;
+  int64 deviceId = 3;
+  string token = 4;
+}
+
+message SendDevice {
+  int64 toDeviceId = 1;
+  int64 fromDeviceId = 2;
+  int32 type = 3;
+  bytes data = 4;
+}
+
+message Text {
+  string text = 1;
+}
